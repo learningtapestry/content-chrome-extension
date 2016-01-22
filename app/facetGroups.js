@@ -1,4 +1,4 @@
-export default {
+const FACET_GROUPS = {
   grades: {
     displayName: 'Grade',
     param: 'grade_ids[]'
@@ -29,3 +29,5 @@ export default {
     param: 'subject_ids[]'
   },
 };
+
+export default FACET_GROUPS;
