@@ -4,7 +4,6 @@ import styles from './SearchFacetClearer.scss';
 
 export default class SearchFacetClearer extends React.Component {
   onClick(event) {
-    console.log('clicked');
     bus.emit('clearFacets');
   }
 
