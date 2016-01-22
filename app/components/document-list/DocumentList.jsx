@@ -4,10 +4,6 @@ import styles from './DocumentList.scss';
 
 export default class DocumentList extends React.Component {
 
-  componentDidUpdate() {
-    gapi.sharetoclassroom.go(this.refs.documentList);
-  }
-
   render() {
     return (
       <ul className={styles['document-list']} ref='documentList'>

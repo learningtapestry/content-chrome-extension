@@ -1,22 +1,28 @@
 import React from 'react';
 import styles from './Document.scss';
+import ShareButton from '../share-button';
 
 export default class Document extends React.Component {
+
+  shareToClassroom() {
+    gapi.sharetoclassroom.render(this.refs.shareButton, { size: 20 });
+    window.setTimeout(() => {
+    }, 1000);
+  }
 
   render() {
     return (
       <li className={styles.document}>
         <div>
-          <a className={styles.title} href={this.props.document.url} target="_blank">
-            {this.props.document.title}
-            <div className={styles['g-sharetoclassroom-container']}>
-              <div className="g-sharetoclassroom"
-                data-title={this.props.document.title}
-                data-body={this.props.document.description}
-                data-size="20"
-                data-url={this.props.document.url} />
-            </div>
-          </a>
+          <div className={styles.title}>
+            <a href={this.props.document.url} target="_blank">
+              {this.props.document.title}
+            </a>
+            <ShareButton
+              title={this.props.document.title}
+              body={this.props.document.description}
+              url={this.props.document.url} />
+          </div>
           <p>{this.props.document.description}</p>
         </div>
       </li>

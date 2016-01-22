@@ -1,0 +1,17 @@
+.share-button {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 14px;
+
+    > button {
+        background-color: #fff;
+        border: 0;
+        outline: none;
+    }
+
+    .g-sharetoclassroom-container {
+        display: inline-block;
+        position: relative;
+        top: 5px;
+    }    
+}
