@@ -8,13 +8,14 @@
 
         .button {
             display: inline;
+            color: blue;
 
             :hover {
                 cursor: pointer;
+                text-decoration: underline;
             }
 
             i {
-                font-weight: bold;
                 font-size: 20px;
                 padding: 10px;
             }
