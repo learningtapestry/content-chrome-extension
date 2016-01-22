@@ -1,0 +1,28 @@
+.paginator {
+    margin: 20px 0;
+    font-size: 80%;
+    color: #40403F;
+
+    .page-buttons {
+        display: inline-block;
+
+        .button {
+            display: inline;
+
+            :hover {
+                cursor: pointer;
+            }
+
+            i {
+                font-weight: bold;
+                font-size: 20px;
+                padding: 10px;
+            }
+        }
+
+        .page-display {
+            position: relative;
+            bottom: 2px;
+        }
+    }
+}

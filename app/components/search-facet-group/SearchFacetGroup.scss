@@ -1,0 +1,19 @@
+.search-facet-group {
+    .heading {
+        color: #8a8782;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0 0 10px;
+        display: block;
+    }
+
+    > ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        > li {
+            padding: 0 0 0 10px;
+        }
+    }
+}

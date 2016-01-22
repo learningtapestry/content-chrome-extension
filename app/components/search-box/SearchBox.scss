@@ -1,0 +1,31 @@
+.search-box-wrapper {
+    .search-box {
+        min-height: 2em;
+        margin: 0;
+        font-size: 20px;
+        padding: 0 10px 0 33px;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #8a8782;
+
+        :focus {
+        }
+    }
+}
+
+.search-box-wrapper:before {
+    font: normal normal normal 14px / 1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    content: "\F002";
+    position: absolute;
+    top: 32px;
+    left: 30px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.search-icon {
+
+}

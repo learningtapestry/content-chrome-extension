@@ -1,0 +1,27 @@
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.search {
+    position: relative;
+}
+
+.facets-wrapper {
+    font-size: 15px;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    background-color: #242424;
+
+    .facets {
+        position: relative;
+        height: 100%;
+    }
+}
+
+.documents {
+    position: absolute;
+    left: 250px;
+    padding: 20px;
+    max-width: 970px;
+}
