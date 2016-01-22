@@ -85,7 +85,7 @@ class SearchStore {
 
     this._req = superagent
       .get('http://localhost:3000/api/v1/search')
-      .set('X-Api-Key', '0594aed5-e320-4344-9b73-7d7fab0bff3f')
+      .set('X-Api-Key', API_KEY)
       .query(this._computeQuery())
       .end((error, res) => {
         if (error) {
