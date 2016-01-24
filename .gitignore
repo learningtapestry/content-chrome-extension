@@ -1,4 +1,5 @@
 /dist
 /node_modules
+/src/chrome/scripts.dist
 npm-debug.log
 .env

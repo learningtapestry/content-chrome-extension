@@ -1,0 +1,15 @@
+.add-to-classroom-button {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 14px;
+    background-image: url('./classroom_logo_48.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+
+    > button {
+        background-color: transparent;
+        border: 0;
+        outline: none;
+    }  
+}

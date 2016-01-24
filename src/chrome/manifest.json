@@ -1,0 +1,54 @@
+{
+  "name": "__MSG_appName__",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "__MSG_appDescription__",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+        "scripts.dist/background.js"
+    ]
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "bookmarks",
+    "contentSettings",
+    "cookies",
+    "*://*.google.com/",
+    "storage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://classroom.google.com/*"
+      ],
+      "css": [
+        "vendor/featherlight.min.css"
+      ],
+      "js": [
+        "scripts.dist/classroom.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
+    },
+    "default_title": "__MSG_appDefaultTitle__"
+  },
+  "web_accessible_resources": [
+    "app_iframe.html"
+  ]
+}

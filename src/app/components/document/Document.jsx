@@ -1,8 +1,23 @@
 import React from 'react';
 import styles from './Document.scss';
+import AddToClasroomButton from '../add-to-classroom-button';
 import ShareButton from '../share-button';
 
 export default class Document extends React.Component {
+
+  actionButton() {
+    if (APP_CONTEXT === 'chrome') {
+      return <AddToClasroomButton
+              title={this.props.document.title}
+              description={this.props.document.description}
+              url={this.props.document.url} />;
+    } else {
+      return <ShareButton
+              title={this.props.document.title}
+              description={this.props.document.description}
+              url={this.props.document.url} />;
+    }
+  }
 
   shareToClassroom() {
     gapi.sharetoclassroom.render(this.refs.shareButton, { size: 20 });
@@ -18,10 +33,7 @@ export default class Document extends React.Component {
             <a href={this.props.document.url} target="_blank">
               {this.props.document.title}
             </a>
-            <ShareButton
-              title={this.props.document.title}
-              body={this.props.document.description}
-              url={this.props.document.url} />
+            {this.actionButton()}
           </div>
           <p>{this.props.document.description}</p>
         </div>

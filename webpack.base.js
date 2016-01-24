@@ -1,13 +1,6 @@
 var path = require('path');
 var Webpack = require('webpack');
 
-// Load .env values into process.env.
-require('dotenv').config();
-
-var envConfig = {
-  API_KEY: JSON.stringify(process.env.API_KEY)
-};
-
 module.exports = {
     module: {
       loaders: [
@@ -38,9 +31,6 @@ module.exports = {
         }
       ]
     },
-    plugins: [
-      new Webpack.DefinePlugin(envConfig)
-    ],
     sassLoader: {
       includePaths: [
         path.resolve(__dirname, 'src', 'app')

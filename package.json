@@ -3,7 +3,9 @@
   "scripts": {
     "prebuild-spa": "mkdir -p dist/spa ; cp -R src/spa/index.html dist/spa/",
     "build-spa": "webpack --progress --colors --inline --content-base dist/spa --config webpack.spa.js",
-    "dev-spa": "npm run prebuild-spa ; webpack-dev-server --devtool eval --progress --colors --inline --content-base dist/spa --config webpack.spa.js"
+    "dev-spa": "npm run prebuild-spa ; webpack-dev-server --devtool eval --progress --colors --inline --content-base dist/spa --config webpack.spa.js",
+    "build-chrome": "webpack --progress --colors --inline --config webpack.chrome.js",
+    "dev-chrome": "webpack --progress --colors --inline --watch --config webpack.chrome.js"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
@@ -14,6 +16,7 @@
     "css-loader": "^0.23.1",
     "dotenv": "^2.0.0",
     "file-loader": "^0.8.5",
+    "imports-loader": "^0.6.5",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
@@ -25,6 +28,7 @@
     "eventemitter3": "^1.1.1",
     "font-awesome": "^4.5.0",
     "intersect": "^1.0.1",
+    "jquery": "^2.2.0",
     "lodash": "^4.0.0",
     "normalize.css": "^3.0.3",
     "perfect-scrollbar": "^0.6.8",
