@@ -1,5 +1,3 @@
-import intersect from 'intersect';
-import remove from 'unordered-array-remove';
 import React from 'react';
 import bus from '../../bus.js';
 import FACET_GROUPS from '../../facetGroups.js';
