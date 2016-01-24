@@ -9,11 +9,6 @@ var envConfig = {
 };
 
 module.exports = {
-    entry: path.resolve(__dirname, 'app/main.js'),
-    output: {
-        path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js',
-    },
     module: {
       loaders: [
         {
@@ -26,7 +21,7 @@ module.exports = {
         // App components will be compiled with CSS modules enabled.
         {
           test: /\.s?css$/,
-          include: [path.resolve(__dirname, 'app')],
+          include: [path.resolve(__dirname, 'src', 'app')],
           loaders: ['style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'sass']
         },
         // Node modules will be compiled with global CSS, because they are
@@ -47,6 +42,8 @@ module.exports = {
       new Webpack.DefinePlugin(envConfig)
     ],
     sassLoader: {
-      includePaths: [path.resolve(__dirname, 'app')]
+      includePaths: [
+        path.resolve(__dirname, 'src', 'app')
+      ]
     }
 };

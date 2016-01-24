@@ -7,8 +7,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Search from './components/search';
 
-function main() {
-  ReactDOM.render(<Search />, document.getElementById('app'));
-}
+const app = {
+  mount: function (container) {
+    ReactDOM.render(<Search />, container);
+  }
+};
 
-main();
+export default app;

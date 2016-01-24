@@ -1,8 +1,9 @@
 {
   "name": "content-chrome-extension",
   "scripts": {
-    "build": "webpack",
-    "dev": "cp app/index.html build/ && webpack-dev-server --devtool eval --progress --colors --inline --content-base build"
+    "prebuild-spa": "mkdir -p dist/spa ; cp -R src/spa/index.html dist/spa/",
+    "build-spa": "webpack --progress --colors --inline --content-base dist/spa --config webpack.spa.js",
+    "dev-spa": "npm run prebuild-spa ; webpack-dev-server --devtool eval --progress --colors --inline --content-base dist/spa --config webpack.spa.js"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
