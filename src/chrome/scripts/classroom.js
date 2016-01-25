@@ -1,3 +1,4 @@
+import constants from './constants.js';
 import jQuery from 'jquery';
 import 'imports?jQuery=jquery!../vendor/featherlight.min.js';
 
@@ -33,6 +34,7 @@ function fillForm(document) {
 }
 
 chrome.runtime.onMessage.addListener(message => {
+  if (!constants.classroomRegex.test(document.URL)) return;
   if ($.featherlight.current()) return;
 
   if (message === 'ICON_CLICKED') {
@@ -41,6 +43,7 @@ chrome.runtime.onMessage.addListener(message => {
 });
 
 $(window).on('message', function(e) {
+  if (!constants.classroomRegex.test(document.URL)) return;
   if (!e.originalEvent) return;
   if (!e.originalEvent.data) return;
   
