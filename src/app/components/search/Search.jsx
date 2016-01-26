@@ -37,7 +37,7 @@ export default class Search extends React.Component {
     this.refs.searchFacets.scrollTop = 0;
   }
 
-  onSearchCompleted(response) {
+  onSearchCompleted() {
     this.setState(SearchStore.getState());
   }
 
