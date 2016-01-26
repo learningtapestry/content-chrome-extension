@@ -1,7 +1,7 @@
 import remove from 'unordered-array-remove';
-import superagent from 'superagent';
 import bus from './bus';
 import facetGroups from './facetGroups';
+import SearchSource from './SearchSource.js';
 
 class SearchStore {
   constructor() {
@@ -79,27 +79,13 @@ class SearchStore {
   }
 
   _performSearch() {
-    if (this._req) {
-      this._req.abort();
-    }
-
-    this._req = superagent
-      .get(`${API_BASE_URL}/search`)
-      .set('X-Api-Key', API_KEY)
-      .query(this._computeQuery())
-      .end((error, res) => {
-        if (error) {
-          bus.emit('searchFailed')
-        } else {
-          Object.assign(this.state, {
-            results: {
-              documents: res.body.documents,
-              facetGroups: res.body.facets,
-              total: res.headers['x-total']
-            }
-          })
-          bus.emit('searchCompleted');
-        }
+    SearchSource.fetch(this._computeQuery())
+      .then(results => {
+        Object.assign(this.state, { results })
+        bus.emit('searchCompleted');
+      })
+      .catch(error => {
+        bus.emit('searchFailed', error);
       });
   }
 }
