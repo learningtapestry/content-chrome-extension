@@ -19,7 +19,7 @@ export default class AddToClassroomButton extends React.Component {
   render() {
     return (
       <div className={styles['add-to-classroom-button']}>
-        <button onClick={this.sendToClassroom.bind(this)}>Add to classroom</button>
+        <button onClick={this.sendToClassroom.bind(this)}>Create Classroom assignment</button>
       </div>
     );
   }
