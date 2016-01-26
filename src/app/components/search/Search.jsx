@@ -3,6 +3,7 @@ import React from 'react';
 import bus from '../../bus.js';
 import SearchStore from '../../SearchStore.js';
 import DocumentList from '../document-list';
+import ErrorDialog from '../error-dialog';
 import Paginator from '../paginator';
 import SearchBox from '../search-box';
 import SearchFacetList from '../search-facet-list';
@@ -18,6 +19,7 @@ export default class Search extends React.Component {
   componentWillMount() {
     // Listen to new searches.
     bus.on('searchCompleted', this.onSearchCompleted, this);
+    bus.on('searchFailed', this.onSearchFailed, this);
     bus.emit('refresh');
   }
 
@@ -28,6 +30,7 @@ export default class Search extends React.Component {
 
   componentWillUnmount() {
     bus.off('searchCompleted', this.onSearchCompleted, this);
+    bus.off('searchFailed', this.onSearchFailed, this);
     Ps.destroy(this.refs.searchFacets);
   }
 
@@ -37,13 +40,26 @@ export default class Search extends React.Component {
     this.refs.searchFacets.scrollTop = 0;
   }
 
+  errorMessage() {
+    if (this.state.error) {
+      return <ErrorDialog error={this.state.error} />;
+    } else {
+      return null;
+    }
+  }
+
   onSearchCompleted() {
     this.setState(SearchStore.getState());
+  }
+
+  onSearchFailed() {
+    this.setState(SearchStore.getState()); 
   }
 
   render() {
     return (
       <div className={styles.search}>
+        {this.errorMessage()}
         <div className={styles['facets-wrapper']}>
           <div className={styles.facets} ref='searchFacets'>
             <SearchFacetList groups={this.state.results.facetGroups} selected={this.state.query.facets} />

@@ -1,0 +1,21 @@
+.error-dialog {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.9);
+    display: table;
+
+    .message {
+        max-width: 90%;
+        max-height: 80%;
+        margin-top: 2%;
+        vertical-align: middle;
+        display: table-cell;
+        color: #fff;
+        font-size: 200%;
+    }
+}

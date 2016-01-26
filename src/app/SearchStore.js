@@ -85,7 +85,8 @@ class SearchStore {
         bus.emit('searchCompleted');
       })
       .catch(error => {
-        bus.emit('searchFailed', error);
+        Object.assign(this.state, { error })
+        bus.emit('searchFailed');
       });
   }
 }
