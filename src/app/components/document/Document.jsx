@@ -28,8 +28,6 @@ export default class Document extends React.Component {
 
   shareToClassroom() {
     gapi.sharetoclassroom.render(this.refs.shareButton, { size: 20 });
-    window.setTimeout(() => {
-    }, 1000);
   }
 
   render() {
