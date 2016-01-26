@@ -29,6 +29,12 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 
 chrome.browserAction.onClicked.addListener(activeTab => {
   chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, 'ICON_CLICKED');
+    let tab = tabs[0];
+
+    if (!constants.classroomRegex.test(tab.url)) {
+      chrome.tabs.create({ url: chrome.runtime.getURL('app.html') });
+    } else {
+      chrome.tabs.sendMessage(tab.id, 'ICON_CLICKED');      
+    }
   });
 });

@@ -6,7 +6,7 @@ import ShareButton from '../share-button';
 export default class Document extends React.Component {
 
   actionButton() {
-    if (APP_CONTEXT === 'chrome') {
+    if (this.isEmbedded()) {
       return <AddToClasroomButton
               title={this.props.document.title}
               description={this.props.document.description}
@@ -17,6 +17,13 @@ export default class Document extends React.Component {
               description={this.props.document.description}
               url={this.props.document.url} />;
     }
+  }
+
+  isEmbedded() {
+    if (typeof IS_EMBEDDED !== 'undefined' && IS_EMBEDDED) {
+      return true;
+    }
+    return false;
   }
 
   shareToClassroom() {

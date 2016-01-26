@@ -15,12 +15,9 @@
   },
   "permissions": [
     "tabs",
-    "http://*/*",
-    "https://*/*",
     "bookmarks",
     "contentSettings",
     "cookies",
-    "*://*.google.com/",
     "storage",
     "webNavigation",
     "webRequest",
@@ -41,6 +38,7 @@
       "all_frames": false
     }
   ],
+  "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
   "browser_action": {
     "default_icon": {
       "19": "images/icon-19-off.png",
@@ -49,6 +47,7 @@
     "default_title": "__MSG_appDefaultTitle__"
   },
   "web_accessible_resources": [
+    "app.html",
     "app_iframe.html"
   ]
 }
