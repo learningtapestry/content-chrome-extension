@@ -42,7 +42,7 @@ export default class Document extends React.Component {
             </a>
             {this.actionButton()}
           </div>
-          <p>{this.props.document.description}</p>
+          <p className={styles.description}>{this.props.document.description}</p>
         </div>
       </li>
     );
