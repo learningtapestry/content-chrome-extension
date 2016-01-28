@@ -1,11 +1,8 @@
-var Webpack = require('webpack');
+var webpack = require('webpack');
 var webpackBase = require('./webpack.base.js');
 var extend = require('lodash').extend;
 var path = require('path');
-
-var envConfig = extend(require('./env.js'), {
-  APP_CONTEXT: JSON.stringify('chrome')
-});
+var envConfig = require('./env.js');
 
 module.exports = [
   extend({}, webpackBase, {
@@ -18,8 +15,8 @@ module.exports = [
       filename: '[name].js'
     },
     plugins: [
-      new Webpack.DefinePlugin(envConfig),
-      new Webpack.optimize.CommonsChunkPlugin({
+      new webpack.DefinePlugin(envConfig),
+      new webpack.optimize.CommonsChunkPlugin({
         name: 'common',
         filename: 'common.js',
         minChunks: 2
@@ -35,6 +32,6 @@ module.exports = [
       path: path.resolve(__dirname, 'src', 'chrome', 'scripts.dist'),
       filename: '[name].js'
     },
-    plugins: [new Webpack.DefinePlugin(envConfig)]
+    plugins: [new webpack.DefinePlugin(envConfig)]
   })
 ];

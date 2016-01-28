@@ -1,11 +1,8 @@
-var Webpack = require('webpack');
+var webpack = require('webpack');
 var webpackBase = require('./webpack.base.js');
-var extend = require('util')._extend;
+var extend = require('lodash').extend;
 var path = require('path');
-
-var envConfig = extend(require('./env.js'), {
-  APP_CONTEXT: JSON.stringify('spa')
-});
+var envConfig = require('./env.js');
 
 module.exports = extend(webpackBase, {
   entry: path.resolve(__dirname, 'src/spa/app.js'),
@@ -14,6 +11,6 @@ module.exports = extend(webpackBase, {
       filename: 'app.js',
   },
   plugins: [
-    new Webpack.DefinePlugin(envConfig)
+    new webpack.DefinePlugin(envConfig)
   ]
 });
