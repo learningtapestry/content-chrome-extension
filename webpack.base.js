@@ -9,7 +9,8 @@ module.exports = {
           loader: 'babel',
           query: {
             presets: ['react', 'es2015']
-          }
+          },
+          exclude: /node_modules/
         },
         // App components will be compiled with CSS modules enabled.
         {
