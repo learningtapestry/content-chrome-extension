@@ -21,37 +21,23 @@ class SearchStore {
 
     this._clearFacets();
 
-    bus.on('refresh', (query) => {
-      this._performSearch();
-    });
-
-    bus.on('clearFacets', () => {
-      this._clearFacets();
-      this._performSearch();
-    });
-
-    bus.on('updateFacet', (group, id, isSelected) => {
-      let sel = this.state.query.facets[group];
-      isSelected ? sel.add(id) : sel.delete(id);
-      this.state.query.page = 1;
-      this._performSearch();
-    });
-
-    bus.on('updatePage', (page) => {
-      this.state.query.page = page;
-      this._performSearch();
-    });
-
-    bus.on('updateQ', (q) => {
-      if (q === '') q = null;
-      this.state.query.q = q;
-      this.state.query.page = 1;
-      this._performSearch();
-    });
+    bus.on('refresh', this._refresh, this);
+    bus.on('clearFacets', this._clearFacets, this);
+    bus.on('updateFacet', this._updateFacet, this);
+    bus.on('updatePage', this._updatePage, this);
+    bus.on('updateQ', this._updateQ, this);
   }
 
   getState() {
     return this.state;
+  }
+
+  release() {
+    bus.off('refresh', this._refresh, this);
+    bus.off('clearFacets', this._clearFacets, this);
+    bus.off('updateFacet', this._updateFacet, this);
+    bus.off('updatePage', this._updatePage, this);
+    bus.off('updateQ', this._updateQ, this);
   }
 
   _clearFacets() {
@@ -78,6 +64,29 @@ class SearchStore {
     return query; 
   }
 
+  _refresh() {
+    this._performSearch();
+  }
+
+  _updateFacet(group, id, isSelected) {
+    let sel = this.state.query.facets[group];
+    isSelected ? sel.add(id) : sel.delete(id);
+    this.state.query.page = 1;
+    this._refresh();
+  }
+
+  _updatePage(page) {
+    this.state.query.page = page;
+    this._refresh();
+  }
+
+  _updateQ(q) {
+    if (q === '') q = null;
+    this.state.query.q = q;
+    this.state.query.page = 1;
+    this._refresh();
+  }
+
   _performSearch() {
     SearchSource.fetch(this._computeQuery())
       .then(results => {
@@ -91,4 +100,4 @@ class SearchStore {
   }
 }
 
-export default new SearchStore();
+export default SearchStore;

@@ -13,7 +13,8 @@ export default class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = SearchStore.getState();
+    this.store = new SearchStore();
+    this.state = store.getState();
   }
 
   componentWillMount() {
@@ -31,6 +32,7 @@ export default class Search extends React.Component {
   componentWillUnmount() {
     bus.off('searchCompleted', this.onSearchCompleted, this);
     bus.off('searchFailed', this.onSearchFailed, this);
+    this.store.release();
     Ps.destroy(this.refs.searchFacets);
   }
 
@@ -49,11 +51,11 @@ export default class Search extends React.Component {
   }
 
   onSearchCompleted() {
-    this.setState(SearchStore.getState());
+    this.setState(this.store.getState());
   }
 
   onSearchFailed() {
-    this.setState(SearchStore.getState()); 
+    this.setState(this.store.getState()); 
   }
 
   render() {
