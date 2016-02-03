@@ -32,7 +32,7 @@ class SearchStore {
 
     bus.on('updateFacet', (group, id, isSelected) => {
       let sel = this.state.query.facets[group];
-      isSelected ? sel.push(id) : remove(sel, sel.indexOf(id));
+      isSelected ? sel.add(id) : sel.delete(id);
       this.state.query.page = 1;
       this._performSearch();
     });
@@ -56,7 +56,7 @@ class SearchStore {
 
   _clearFacets() {
     Object.keys(facetGroups).forEach(group => {
-      this.state.query.facets[group] = []; 
+      this.state.query.facets[group] = new Set(); 
     });
   }
 
