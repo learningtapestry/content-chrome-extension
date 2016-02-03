@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import nock from 'nock';
-import SearchSource from 'app/SearchSource';
+import SearchSource from 'search-app/SearchSource';
 
 function mockRequest() {
   return nock(API_BASE_URL, { 'x-total': 1 }).get('/search');

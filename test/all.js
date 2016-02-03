@@ -1,1 +1,1 @@
-import './app/SearchSource.test.js';
+import './search-app/SearchSource.test.js';

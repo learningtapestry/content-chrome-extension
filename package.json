@@ -1,13 +1,8 @@
 {
   "name": "content-chrome-extension",
   "scripts": {
-    "prebuild-spa": "mkdir -p dist/spa ; cp -R src/spa/index.html dist/spa/",
-    "build-spa": "webpack --progress --colors --inline --content-base dist/spa --config webpack.spa.js",
-    "dev-spa": "npm run prebuild-spa ; webpack-dev-server --devtool eval --progress --colors --inline --content-base dist/spa --config webpack.spa.js",
-    "build-chrome": "webpack --progress --colors --inline --config webpack.chrome.js",
-    "dev-chrome": "webpack --progress --colors --inline --watch --config webpack.chrome.js",
-    "test": "webpack --config webpack.test.js --progress --colors",
-    "test-watch": "webpack --config webpack.test.js --progress --colors --watch"
+    "build": "webpack --progress --colors", 
+    "watch": "webpack --progress --colors --watch"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",

@@ -10,5 +10,5 @@ script.type = 'text/javascript';
 script.src = 'https://apis.google.com/js/platform.js';
 document.body.appendChild(script);
 
-import app from '../../app';
-app.mount(document.getElementById('app'));
+import searchApp from 'search-app';
+searchApp.mount(document.getElementById('app'));
