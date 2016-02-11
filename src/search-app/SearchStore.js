@@ -19,7 +19,7 @@ class SearchStore {
       }
     };
 
-    this._clearFacets();
+    this._clearFacets(false);
 
     bus.on('refresh', this._refresh, this);
     bus.on('clearFacets', this._clearFacets, this);
@@ -40,9 +40,13 @@ class SearchStore {
     bus.off('updateQ', this._updateQ, this);
   }
 
-  _clearFacets() {
+  _clearFacets(refresh = true) {
     Object.keys(facetGroups).forEach(group => {
       this.state.query.facets[group] = new Set(); 
+
+      if (refresh) {
+        this._refresh();
+      }
     });
   }
 
@@ -58,7 +62,7 @@ class SearchStore {
 
     Object.entries(facetGroups).forEach(([group, groupDef]) => {
       let sel = state.query.facets[group];
-      if (sel.length > 0) query[groupDef.param] = sel;
+      if (sel.size > 0) query[groupDef.param] = Array.from(sel);
     });
 
     return query; 
