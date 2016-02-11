@@ -1,4 +1,3 @@
-import remove from 'unordered-array-remove';
 import bus from './bus';
 import facetGroups from './facetGroups';
 import SearchSource from './SearchSource.js';
