@@ -14,7 +14,7 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.store = new SearchStore();
-    this.state = store.getState();
+    this.state = this.store.getState();
   }
 
   componentWillMount() {
