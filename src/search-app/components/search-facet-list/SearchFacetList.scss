@@ -1,21 +1,26 @@
 .search-facet-list {
-    background-color: #242424;
-    color: #D5D5D5;
-    padding: 20px;
+  background-color: #242424;
+  color: #D5D5D5;
+  padding: 20px;
+  position: relative;
 
-    > ul {
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
+  > ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
 
-        > li {
-            margin-bottom: 15px;
-        }
+    > li {
+      margin-bottom: 15px;
     }
+  }
 
-    .search-facet-clearer {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-    }
+  .search-facet-clearer {
+    position: absolute;
+    top: 22px;
+    right: 15px;
+  }
+}
+
+.logo {
+  margin: 20px 0 0 20px;
 }
