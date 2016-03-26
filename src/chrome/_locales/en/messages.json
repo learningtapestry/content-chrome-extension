@@ -1,14 +1,14 @@
 {
   "appName": {
-    "message": "LearningTapestry Library",
+    "message": "Open Education Search",
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "A library of open educational resources featuring Google Classroom integration",
+    "message": "K-12 open education resource (OER) search with grade level, learning standard and publisher filtering",
     "description": "The description of the application"
   },
   "appDefaultTitle": {
-    "message": "Add from LearningTapestry Library",
+    "message": "Add from Open Education Search",
     "description": "Title in the action button"
   }
 }
