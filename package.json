@@ -2,7 +2,10 @@
   "name": "content-chrome-extension",
   "scripts": {
     "build": "webpack --progress --colors", 
-    "watch": "webpack --progress --colors --watch"
+    "watch": "webpack --progress --colors --watch",
+    "clean": "rm -r dist/ && rm -r src/chrome/scripts.dist/",
+    "prepackage": "npm run clean && BUILD=generic NODE_ENV=production npm run build",
+    "package": "(cd src/chrome && zip -r - ./) > dist/open-education-search.zip"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
